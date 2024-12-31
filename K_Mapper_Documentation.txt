@@ -1,0 +1,65 @@
+K_Mapper Class documentation
+
+__init__(bs)
+    initialized with an array of the variable names in bs
+reset(val=None)
+    sets all values in the k map to val, by default sets entire map as don't cares
+index(vals)
+    takes in a binary array and returns the appropriate index for the kmap array
+access(vals)
+    returns the value in the kmap associated with the binary array input
+Not()
+    negates every value in the kmap
+And(km2)
+    changes the kmap to reflect its values being and-ed by those of km2
+Or(km2)
+    changes the kmap to reflect its values being or-ed by those of km2
+Xor(km2)
+    changes the kmap to reflect its values being xor-ed by those of km2
+Nand(km2)
+    changes the kmap to reflect its values being nand-ed by those of km2
+Nor(km2)
+    changes the kmap to reflect its values being nor-ed by those of km2
+Xnor(km2)
+    changes the kmap to reflect its values being xnor-ed by those of km2
+Import(expr)
+    sets up the kmap to match the expression entered as function form, can use functions Not, And, Or, Xor, Nand, Nor, and Xnor
+    example: "OR(XOR(a,b),AND(c,d),NOT(e))" is the function form of (a^b)+cd+!e
+set(vals)
+    for a dictionary, takes binary arrays for the variable values and sets the according value in the kmap
+dCare(vals)
+    for an iterable of binary arrays, sets the value in the kmap to the don't care value
+minSOP
+    returns a random minimal sum of products expression in function form
+minPOS
+    returns a random minimal product of sums expression in function form
+
+Tester Documentation
+
+Enter variables space-separated, then enter an expression in function form, then the don't cares as space-separated bitstrings
+Example:
+
+Enter variable names: a b c d
+Enter boolean expression: XNOR(d,XOR(c,AND(a,b)))
+Enter each of the dont cares as binary strings: 0000 1100 1111
+Your K Map:
+cd\ab
+  |00|01|11|10
+00|X |1 |X |1
+01|0 |0 |1 |0
+11|1 |1 |X |1
+10|0 |0 |1 |0
+Minimal Sum of Products Form: OR(AND(NOT(d),NOT(c)),AND(b,a),AND(d,c))
+cd\ab
+  |00|01|11|10
+00|1 |1 |1 |1
+01|0 |0 |1 |0
+11|1 |1 |1 |1
+10|0 |0 |1 |0
+Minimal Product of Sums Form: AND(OR(NOT(d),c,a),OR(NOT(d),c,b),OR(d,NOT(c),a),OR(d,NOT(c),b))
+cd\ab
+  |00|01|11|10
+00|1 |1 |1 |1
+01|0 |0 |1 |0
+11|1 |1 |1 |1
+10|0 |0 |1 |0
